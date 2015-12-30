@@ -6,31 +6,31 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="云颠侠客的blog">
-    <title>Hello World - 云颠侠客的blog</title>
+    <title>爬虫工具nutch学习系列１  - 入门 - 云颠侠客的blog</title>
     <meta name="author" content="billcz">
     
     
         <link rel="alternative" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="description" content="Nutch简介Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="/2015/11/19/hello-world/index.html">
+<meta property="og:title" content="爬虫工具nutch学习系列１  - 入门">
+<meta property="og:url" content="/2015/12/30/nutchStudy-1-post/index.html">
 <meta property="og:site_name" content="云颠侠客的blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2015-11-19T08:48:39.288Z">
+<meta property="og:description" content="Nutch简介Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、">
+<meta property="og:updated_time" content="2015-12-30T12:10:25.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="爬虫工具nutch学习系列１  - 入门">
+<meta name="twitter:description" content="Nutch简介Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、">
     
     
     
         <meta property="og:image" content="/assets/images/title.jpg"/>
     
     
+    
+        <meta property="og:image" content="/2015/12/30/nutchStudy-1-post/cover.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="/2015/12/30/nutchStudy-1-post/cover.jpg" />
     
     
     <!--STYLES-->
@@ -177,42 +177,82 @@ Quick">
 </nav>
 
             
-            <div id="main" data-behavior="3"
-                 class="
-                        hasCoverMetaIn
-                        ">
-                
-<article class="post" itemscope itemType="http://schema.org/BlogPosting">
-    
-    
-        <div class="post-header main-content-wrap text-left">
+        <div class="post-header-cover
+                    text-center
+                    "
+             style="background-image:url('/2015/12/30/nutchStudy-1-post/cover.jpg');"
+             data-behavior="3">
+            
+                <div class="post-header main-content-wrap text-center">
     
         <h1 class="post-title" itemprop="headline">
-            Hello World
+            爬虫工具nutch学习系列１  - 入门
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Thu Nov 19 2015 16:48:39 GMT+0800">
+    <time itemprop="datePublished" content="Wed Dec 30 2015 19:19:37 GMT+0800">
 	
-		    Nov 19, 2015
+		    Dec 30, 2015
     	
     </time>
     
 </div>
 </div>
+            
+        </div>
+
+            <div id="main" data-behavior="3"
+                 class="hasCover
+                        hasCoverMetaIn
+                        hasCoverCaption">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+        <span class="post-header-cover-caption caption">Life is beautiful</span>
+    
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <h2 id="Nutch简介">Nutch简介</h2><p>Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、Solr、ElasticSearch等。</p>
+<h2 id="安装">安装</h2><ul>
+<li>下载安装包apache-nutch-1.X-bin.zip</li>
+<li>解压</li>
+<li>cd apache-nutch-1.X/</li>
+<li>配置环境变量NUTCH_RUNTIME_HOME，指向nutch所在路径</li>
+</ul>
+<p>验证是否安装成功，敲入命令bin/nutch，显示如下类似信息：</p>
+<pre><code>Usage: nutch COMMAND where command is one of:
+readdb            read / dump crawl db
+mergedb           <span class="operator"><span class="keyword">merge</span> crawldb-s, <span class="keyword">with</span> optional filtering
+readlinkdb        <span class="keyword">read</span> / dump <span class="keyword">link</span> db
+inject            inject <span class="keyword">new</span> urls <span class="keyword">into</span> the <span class="keyword">database</span>
+generate          generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> crawl db
+freegen           generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> <span class="built_in">text</span> files
+<span class="keyword">fetch</span>             <span class="keyword">fetch</span> a <span class="keyword">segment</span><span class="string">'s pages
+...</span></span>
+</code></pre><h2 id="爬取你的第一个网站">爬取你的第一个网站</h2><p>Nutch只需２步配置，就能开始爬虫任务</p>
+<ol>
+<li><p>自定义nutch爬虫配置，主要是文件conf/nutch-site.xml. 在文件中加入如下内容：</p>
+<pre><code><span class="tag">&lt;<span class="title">property</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">name</span>&gt;</span>http.agent.name<span class="tag">&lt;/<span class="title">name</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">value</span>&gt;</span>My Nutch Spider<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+</code></pre></li>
+<li><p>创建一个url种子列表文件<br>url种子文件定义了初始要爬取的网站，一行一个，nutch会逐个爬取。</p>
+<ul>
+<li>在nutch目录创建一个urls目录。<pre><code><span class="built_in">mkdir</span> -p urls
+<span class="built_in">cd</span> urls
+</code></pre></li>
+<li>新建一个seed.txt，在该文件中写入要爬取网站。例如：<pre><code><span class="label">http:</span>//nutch.apache<span class="preprocessor">.org</span>/
+</code></pre></li>
+</ul>
+</li>
+<li>创建过滤规则(可选)<br>配置文件conf/regex-urlfilter.txt定义了爬取的规则，包括了一些正则表达式。如若只爬取nutch.apache.org的网站，将<pre><code><span class="preprocessor"># accept anything <span class="keyword">else</span></span>
++.
+</code></pre>修改为：<pre><code>+^<span class="link_url">http://(</span>[<span class="link_label">a-z0-9</span>]<span class="strong">*\.)*</span>nutch.apache.org/
+</code></pre></li>
+</ol>
+<h2 id="总结">总结</h2><p>本节简单介绍了nutch和一个简单的例子。主要对nutch有个初步的认识。下节介绍如何自定义爬取并建立索引，并在Solr里进行搜索。</p>
 
             
                 
@@ -225,7 +265,7 @@ Quick">
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/其他/">其他</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/crawler/">crawler</a>
 
             </div>
         
@@ -234,7 +274,7 @@ Quick">
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/19/oldPosts/"  data-tooltip="往日汇总">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/30/hello-world/"  data-tooltip="Hello World">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -257,26 +297,20 @@ Quick">
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2015/11/19/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2015/11/19/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2015/11/19/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
-        
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
         
         <li class="post-action">
             
@@ -309,7 +343,7 @@ Quick">
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/11/19/oldPosts/"  data-tooltip="往日汇总">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2015/12/30/hello-world/"  data-tooltip="Hello World">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -332,26 +366,20 @@ Quick">
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2015/11/19/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2015/11/19/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2015/11/19/hello-world/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
-        
-            <li class="post-action">
-                <a class="post-action-btn btn btn--default" href="#disqus_thread">
-                    <i class="fa fa-comment-o"></i>
-                </a>
-            </li>
         
         <li class="post-action">
             
@@ -368,17 +396,17 @@ Quick">
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=/2015/11/19/hello-world/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-google-plus"></i><span class="">分享到 Google+</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2015/11/19/hello-world/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=/2015/11/19/hello-world/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=/2015/12/30/nutchStudy-1-post/">
                 <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
             </a>
         </li>
