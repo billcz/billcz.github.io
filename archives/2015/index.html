@@ -256,7 +256,7 @@
         </article>
     
         
-        <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
             <div class="postShorten-wrap">
                 <div class="postShorten-header">
                     <h1 class="postShorten-title" itemprop="headline">
@@ -274,13 +274,8 @@
 </div>
                 </div>
                 
-                    <div class="postShorten-thumbnailimg postShorten-thumbnailimg--bottom">
-                        <img alt="" itemprop="image" src="/2015/12/30/nutchStudy-1-post/cover.jpg"/>
-                    </div>
-                    
                 
-                
-                    <div class="postShorten-content" itemprop="articleBody">
+                    <div class="postShorten-excerpt" itemprop="articleBody">
                         <h2 id="Nutch简介">Nutch简介</h2><p>Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、Solr、ElasticSearch等。</p>
 <h2 id="安装">安装</h2><ul>
 <li>下载安装包apache-nutch-1.X-bin.zip</li>
@@ -298,44 +293,21 @@ generate          generate <span class="keyword">new</span> segments <span class
 freegen           generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> <span class="built_in">text</span> files
 <span class="keyword">fetch</span>             <span class="keyword">fetch</span> a <span class="keyword">segment</span><span class="string">'s pages
 ...</span></span>
-</code></pre><h2 id="爬取你的第一个网站">爬取你的第一个网站</h2><p>Nutch只需２步配置，就能开始爬虫任务</p>
-<ol>
-<li><p>自定义nutch爬虫配置，主要是文件conf/nutch-site.xml. 在文件中加入如下内容：</p>
-<pre><code><span class="tag">&lt;<span class="title">property</span>&gt;</span>
- <span class="tag">&lt;<span class="title">name</span>&gt;</span>http.agent.name<span class="tag">&lt;/<span class="title">name</span>&gt;</span>
- <span class="tag">&lt;<span class="title">value</span>&gt;</span>My Nutch Spider<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-</code></pre></li>
-<li><p>创建一个url种子列表文件<br>url种子文件定义了初始要爬取的网站，一行一个，nutch会逐个爬取。</p>
-<ul>
-<li>在nutch目录创建一个urls目录。<pre><code><span class="built_in">mkdir</span> -p urls
-<span class="built_in">cd</span> urls
-</code></pre></li>
-<li>新建一个seed.txt，在该文件中写入要爬取网站。例如：<pre><code><span class="label">http:</span>//nutch.apache<span class="preprocessor">.org</span>/
-</code></pre></li>
-</ul>
-</li>
-<li>创建过滤规则(可选)<br>配置文件conf/regex-urlfilter.txt定义了爬取的规则，包括了一些正则表达式。如若只爬取nutch.apache.org的网站，将<pre><code><span class="preprocessor"># accept anything <span class="keyword">else</span></span>
-+.
-</code></pre>修改为：<pre><code>+^<span class="link_url">http://(</span>[<span class="link_label">a-z0-9</span>]<span class="strong">*\.)*</span>nutch.apache.org/
-</code></pre></li>
-</ol>
-<h2 id="总结">总结</h2><p>本节简单介绍了nutch和一个简单的例子。主要对nutch有个初步的认识。下节介绍如何自定义爬取并建立索引，并在Solr里进行搜索。</p>
-
+</code></pre>
                         
+                            <a href="/2015/12/30/nutchStudy-1-post/" class="postShorten-excerpt_link link">
+                                阅读全文
+                            </a>
                             
-
-                        
-                        
-                            <p>
-                                <a href="/2015/12/30/nutchStudy-1-post/#post-footer" class="postShorten-excerpt_link link">
-                                    注释和共享
-                                </a>
-                            </p>
                         
                     </div>
                 
             </div>
+            
+                <div class="postShorten-thumbnailimg">
+                    <img alt="" itemprop="image" src="/2015/12/30/nutchStudy-1-post/cover.jpg"/>
+                </div>
+                
             
         </article>
     

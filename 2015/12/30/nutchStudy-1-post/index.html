@@ -18,7 +18,7 @@
 <meta property="og:url" content="/2015/12/30/nutchStudy-1-post/index.html">
 <meta property="og:site_name" content="云颠侠客的blog">
 <meta property="og:description" content="Nutch简介Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、">
-<meta property="og:updated_time" content="2015-12-30T12:10:25.163Z">
+<meta property="og:updated_time" content="2015-12-30T12:12:13.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫工具nutch学习系列１  - 入门">
 <meta name="twitter:description" content="Nutch简介Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、">
@@ -230,7 +230,8 @@ generate          generate <span class="keyword">new</span> segments <span class
 freegen           generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> <span class="built_in">text</span> files
 <span class="keyword">fetch</span>             <span class="keyword">fetch</span> a <span class="keyword">segment</span><span class="string">'s pages
 ...</span></span>
-</code></pre><h2 id="爬取你的第一个网站">爬取你的第一个网站</h2><p>Nutch只需２步配置，就能开始爬虫任务</p>
+</code></pre><a id="more"></a>
+<h2 id="爬取你的第一个网站">爬取你的第一个网站</h2><p>Nutch只需２步配置，就能开始爬虫任务</p>
 <ol>
 <li><p>自定义nutch爬虫配置，主要是文件conf/nutch-site.xml. 在文件中加入如下内容：</p>
 <pre><code><span class="tag">&lt;<span class="title">property</span>&gt;</span>

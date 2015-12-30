@@ -80,7 +80,7 @@
     <link href="/2015/12/30/nutchStudy-1-post/"/>
     <id>/2015/12/30/nutchStudy-1-post/</id>
     <published>2015-12-30T11:19:37.000Z</published>
-    <updated>2015-12-30T12:10:25.163Z</updated>
+    <updated>2015-12-30T12:12:13.417Z</updated>
     <content type="html"><![CDATA[<h2 id="Nutch简介">Nutch简介</h2><p>Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、Solr、ElasticSearch等。</p>
 <h2 id="安装">安装</h2><ul>
 <li>下载安装包apache-nutch-1.X-bin.zip</li>
@@ -98,7 +98,8 @@ generate          generate <span class="keyword">new</span> segments <span class
 freegen           generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> <span class="built_in">text</span> files
 <span class="keyword">fetch</span>             <span class="keyword">fetch</span> a <span class="keyword">segment</span><span class="string">'s pages
 ...</span></span>
-</code></pre><h2 id="爬取你的第一个网站">爬取你的第一个网站</h2><p>Nutch只需２步配置，就能开始爬虫任务</p>
+</code></pre><a id="more"></a>
+<h2 id="爬取你的第一个网站">爬取你的第一个网站</h2><p>Nutch只需２步配置，就能开始爬虫任务</p>
 <ol>
 <li><p>自定义nutch爬虫配置，主要是文件conf/nutch-site.xml. 在文件中加入如下内容：</p>
 <pre><code><span class="tag">&lt;<span class="title">property</span>&gt;</span>
@@ -123,7 +124,25 @@ freegen           generate <span class="keyword">new</span> segments <span class
 <h2 id="总结">总结</h2><p>本节简单介绍了nutch和一个简单的例子。主要对nutch有个初步的认识。下节介绍如何自定义爬取并建立索引，并在Solr里进行搜索。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="Nutch简介">Nutch简介</h2><p>Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，]]>
+    <![CDATA[<h2 id="Nutch简介">Nutch简介</h2><p>Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、Solr、ElasticSearch等。</p>
+<h2 id="安装">安装</h2><ul>
+<li>下载安装包apache-nutch-1.X-bin.zip</li>
+<li>解压</li>
+<li>cd apache-nutch-1.X/</li>
+<li>配置环境变量NUTCH_RUNTIME_HOME，指向nutch所在路径</li>
+</ul>
+<p>验证是否安装成功，敲入命令bin/nutch，显示如下类似信息：</p>
+<pre><code>Usage: nutch COMMAND where command is one of:
+readdb            read / dump crawl db
+mergedb           <span class="operator"><span class="keyword">merge</span> crawldb-s, <span class="keyword">with</span> optional filtering
+readlinkdb        <span class="keyword">read</span> / dump <span class="keyword">link</span> db
+inject            inject <span class="keyword">new</span> urls <span class="keyword">into</span> the <span class="keyword">database</span>
+generate          generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> crawl db
+freegen           generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> <span class="built_in">text</span> files
+<span class="keyword">fetch</span>             <span class="keyword">fetch</span> a <span class="keyword">segment</span><span class="string">'s pages
+...</span></span>
+</code></pre>]]>
+    
     </summary>
     
       <category term="crawler" scheme="/tags/crawler/"/>
