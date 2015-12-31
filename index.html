@@ -182,6 +182,100 @@
 <section class="postShorten-group main-content-wrap">
     
         
+        <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+            <div class="postShorten-wrap">
+                <div class="postShorten-header">
+                    <h1 class="postShorten-title" itemprop="headline">
+                        
+                                <a class="link-unstyled" href="/2015/12/31/nutch-hadoop/">Nutch结合hadoop进行分布式爬取</a>
+                        
+                    </h1>
+                    <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Thu Dec 31 2015 15:47:11 GMT+0800">
+	
+		    Dec 31, 2015
+    	
+    </time>
+    
+</div>
+                </div>
+                
+                
+                    <div class="postShorten-content" itemprop="articleBody">
+                        <h1 id="hadoop">hadoop</h1><h2 id="安装">安装</h2><p>Nutch2.1依赖hadoop1.0.3版本，所以下载hadoop1.0.3版本。安装官方指导文档安装，并配置伪分布式模式</p>
+<h2 id="验证">验证</h2><p>配置完成后，敲入命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop version</span><br></pre></td></tr></table></figure></p>
+<p>查看版本信息，若类似如下信息，则表示成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hadoop <span class="number">1.0</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="配置">配置</h2><p>Nutch分布式爬取，需要在hdfs目录中先生成/user/dt/，　故用如下命令先生成该目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir -p /user/dt</span><br></pre></td></tr></table></figure></p>
+<h1 id="Nutch2">Nutch2</h1><h2 id="安装-1">安装</h2><p>按照之前post安装nutch2.1版本, 这里不重复</p>
+<h2 id="生成url种子文件">生成url种子文件</h2><p>编译完成后，　进入runtime/deploy目录，新建urls目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir urls</span><br><span class="line"><span class="built_in">cd</span> urls</span><br></pre></td></tr></table></figure></p>
+<p>新建seed.txt文件，写入要爬取网站<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.XXXX.com</span><br></pre></td></tr></table></figure></p>
+<h2 id="上传urls到hdfs">上传urls到hdfs</h2><p>nutch分布式抓取，　需要在hdfs目录中存在urls种子文件，因此需要将本地urls传至hdfs系统中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put urls /user/dt/</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动分布式抓取">启动分布式抓取</h2><p>敲入命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/nutch urls</span><br></pre></td></tr></table></figure></p>
+<p>即可看到如下信息，即表示开始分布式抓取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">57</span> INFO input.FileInputFormat: Total input paths to process : <span class="number">1</span></span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">57</span> INFO util.NativeCodeLoader: Loaded the native-hadoop library</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">57</span> WARN snappy.LoadSnappy: Snappy native library not loaded</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">57</span> INFO mapred.JobClient: Running job: job_201512311537_0002</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">58</span> INFO mapred.JobClient:  map <span class="number">0</span>% reduce <span class="number">0</span>%</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">12</span> INFO mapred.JobClient:  map <span class="number">100</span>% reduce <span class="number">0</span>%</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">17</span> INFO mapred.JobClient: Job complete: job_201512311537_0002</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">17</span> INFO mapred.JobClient: Counters: <span class="number">18</span></span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">17</span> INFO mapred.JobClient:   Map-Reduce Framework</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结">总结</h1><p>nutch支持单机爬取，　也支持hadoop分布式爬取，功能强大，且能导出到多种源。</p>
+
+                        
+                            
+
+                        
+                        
+                            <p>
+                                <a href="/2015/12/31/nutch-hadoop/#post-footer" class="postShorten-excerpt_link link">
+                                    注释和共享
+                                </a>
+                            </p>
+                        
+                    </div>
+                
+            </div>
+            
+        </article>
+    
+        
+        <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+            <div class="postShorten-wrap">
+                <div class="postShorten-header">
+                    <h1 class="postShorten-title" itemprop="headline">
+                        
+                                <a class="link-unstyled" href="/2015/12/30/nutchStudy-3-post/">爬虫工具nutch学习系列3  - nutch2.x结合MySQL</a>
+                        
+                    </h1>
+                    <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Wed Dec 30 2015 20:19:47 GMT+0800">
+	
+		    Dec 30, 2015
+    	
+    </time>
+    
+</div>
+                </div>
+                
+                    <div class="postShorten-thumbnailimg postShorten-thumbnailimg--bottom">
+                        <img alt="" itemprop="image" src="/2015/12/30/nutchStudy-3-post/cover.jpg"/>
+                    </div>
+                    
+                
+                
+                    <div class="postShorten-content" itemprop="articleBody">
+                        
+                        
+                            
+
+                        
+                        
+                            <p>
+                                <a href="/2015/12/30/nutchStudy-3-post/#post-footer" class="postShorten-excerpt_link link">
+                                    注释和共享
+                                </a>
+                            </p>
+                        
+                    </div>
+                
+            </div>
+            
+        </article>
+    
+        
         <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
             <div class="postShorten-wrap">
                 <div class="postShorten-header">
@@ -255,7 +349,51 @@
         </article>
     
         
-        <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+            <div class="postShorten-wrap">
+                <div class="postShorten-header">
+                    <h1 class="postShorten-title" itemprop="headline">
+                        
+                                <a class="link-unstyled" href="/2015/12/30/nutchStudy-2-post/">爬虫工具nutch学习系列2  - 建立索引、Solr搜索</a>
+                        
+                    </h1>
+                    <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Wed Dec 30 2015 19:19:37 GMT+0800">
+	
+		    Dec 30, 2015
+    	
+    </time>
+    
+</div>
+                </div>
+                
+                    <div class="postShorten-thumbnailimg postShorten-thumbnailimg--bottom">
+                        <img alt="" itemprop="image" src="/2015/12/30/nutchStudy-2-post/cover.jpg"/>
+                    </div>
+                    
+                
+                
+                    <div class="postShorten-content" itemprop="articleBody">
+                        
+                        
+                            
+
+                        
+                        
+                            <p>
+                                <a href="/2015/12/30/nutchStudy-2-post/#post-footer" class="postShorten-excerpt_link link">
+                                    注释和共享
+                                </a>
+                            </p>
+                        
+                    </div>
+                
+            </div>
+            
+        </article>
+    
+        
+        <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
             <div class="postShorten-wrap">
                 <div class="postShorten-header">
                     <h1 class="postShorten-title" itemprop="headline">
@@ -273,6 +411,11 @@
 </div>
                 </div>
                 
+                    <div class="postShorten-thumbnailimg postShorten-thumbnailimg--bottom">
+                        <img alt="" itemprop="image" src="/2015/12/30/nutchStudy-1-post/cover.jpg"/>
+                    </div>
+                    
+                
                 
                     <div class="postShorten-excerpt" itemprop="articleBody">
                         <h2 id="Nutch简介">Nutch简介</h2><p>Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、Solr、ElasticSearch等。</p>
@@ -282,17 +425,7 @@
 <li>cd apache-nutch-1.X/</li>
 <li>配置环境变量NUTCH_RUNTIME_HOME，指向nutch所在路径</li>
 </ul>
-<p>验证是否安装成功，敲入命令bin/nutch，显示如下类似信息：</p>
-<pre><code>Usage: nutch COMMAND where command is one of:
-readdb            read / dump crawl db
-mergedb           <span class="operator"><span class="keyword">merge</span> crawldb-s, <span class="keyword">with</span> optional filtering
-readlinkdb        <span class="keyword">read</span> / dump <span class="keyword">link</span> db
-inject            inject <span class="keyword">new</span> urls <span class="keyword">into</span> the <span class="keyword">database</span>
-generate          generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> crawl db
-freegen           generate <span class="keyword">new</span> segments <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">from</span> <span class="built_in">text</span> files
-<span class="keyword">fetch</span>             <span class="keyword">fetch</span> a <span class="keyword">segment</span><span class="string">'s pages
-...</span></span>
-</code></pre>
+<p>验证是否安装成功，敲入命令bin/nutch，显示如下类似信息：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Usage: nutch COMMAND <span class="built_in">where</span> <span class="built_in">command</span> is one of:</span><br><span class="line">readdb            <span class="built_in">read</span> / dump crawl db</span><br><span class="line">mergedb           merge crawldb<span class="operator">-s</span>, with optional filtering</span><br><span class="line">readlinkdb        <span class="built_in">read</span> / dump link db</span><br><span class="line">inject            inject new urls into the database</span><br><span class="line">generate          generate new segments to fetch from crawl db</span><br><span class="line">freegen           generate new segments to fetch from text files</span><br><span class="line">fetch             fetch a segment<span class="string">'s pages</span><br><span class="line">...</span></span><br></pre></td></tr></table></figure></p>
                         
                             <a href="/2015/12/30/nutchStudy-1-post/" class="postShorten-excerpt_link link">
                                 阅读全文
@@ -302,11 +435,6 @@ freegen           generate <span class="keyword">new</span> segments <span class
                     </div>
                 
             </div>
-            
-                <div class="postShorten-thumbnailimg">
-                    <img alt="" itemprop="image" src="/2015/12/30/nutchStudy-1-post/cover.jpg"/>
-                </div>
-                
             
         </article>
     
