@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="/"/>
-  <updated>2015-12-31T08:01:18.285Z</updated>
+  <updated>2015-12-31T08:02:52.429Z</updated>
   <id>/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="/2015/12/31/nutch-hadoop/"/>
     <id>/2015/12/31/nutch-hadoop/</id>
     <published>2015-12-31T07:47:11.000Z</published>
-    <updated>2015-12-31T08:01:18.285Z</updated>
+    <updated>2015-12-31T08:02:52.429Z</updated>
     <content type="html"><![CDATA[<h1 id="hadoop">hadoop</h1><h2 id="安装">安装</h2><p>Nutch2.1依赖hadoop1.0.3版本，所以下载hadoop1.0.3版本。安装官方指导文档安装，并配置伪分布式模式</p>
 <h2 id="验证">验证</h2><p>配置完成后，敲入命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop version</span><br></pre></td></tr></table></figure></p>
 <p>查看版本信息，若类似如下信息，则表示成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hadoop <span class="number">1.0</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure></p>
