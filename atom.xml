@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="/"/>
-  <updated>2015-12-31T08:10:23.427Z</updated>
+  <updated>2015-12-31T08:58:59.172Z</updated>
   <id>/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="/2015/12/31/nutch-hadoop/"/>
     <id>/2015/12/31/nutch-hadoop/</id>
     <published>2015-12-31T07:47:11.000Z</published>
-    <updated>2015-12-31T08:10:23.427Z</updated>
+    <updated>2015-12-31T08:58:59.172Z</updated>
     <content type="html"><![CDATA[<h1 id="hadoop">hadoop</h1><h2 id="安装">安装</h2><p>Nutch2.1依赖hadoop1.0.3版本，所以下载hadoop1.0.3版本。安装官方指导文档安装，并配置伪分布式模式</p>
 <h2 id="验证">验证</h2><p>配置完成后，敲入命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop version</span><br></pre></td></tr></table></figure></p>
 <p>查看版本信息，若类似如下信息，则表示成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hadoop <span class="number">1.0</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure></p>
@@ -29,6 +29,7 @@
 <h2 id="生成url种子文件">生成url种子文件</h2><p>编译完成后，　进入runtime/deploy目录，新建urls目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir urls</span><br><span class="line"><span class="built_in">cd</span> urls</span><br></pre></td></tr></table></figure></p>
 <p>新建seed.txt文件，写入要爬取网站<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.XXXX.com</span><br></pre></td></tr></table></figure></p>
 <h2 id="上传urls到hdfs">上传urls到hdfs</h2><p>nutch分布式抓取，　需要在hdfs目录中存在urls种子文件，因此需要将本地urls传至hdfs系统中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put urls /user/dt/</span><br></pre></td></tr></table></figure></p>
+<h2 id="conf路径">conf路径</h2><p>将local/conf目录拷贝至runtime下，　修改regex-urlfilter.txt，加入要过滤的正则表达式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+^http://([a-z0-<span class="number">9</span>]*\.)*example.com</span><br></pre></td></tr></table></figure></p>
 <h2 id="启动分布式抓取">启动分布式抓取</h2><p>敲入命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/nutch urls</span><br></pre></td></tr></table></figure></p>
 <p>即可看到如下信息，即表示开始分布式抓取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">57</span> INFO input.FileInputFormat: Total input paths to process : <span class="number">1</span></span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">57</span> INFO util.NativeCodeLoader: Loaded the native-hadoop library</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">57</span> WARN snappy.LoadSnappy: Snappy native library not loaded</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">57</span> INFO mapred.JobClient: Running job: job_201512311537_0002</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">39</span>:<span class="number">58</span> INFO mapred.JobClient:  map <span class="number">0</span>% reduce <span class="number">0</span>%</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">12</span> INFO mapred.JobClient:  map <span class="number">100</span>% reduce <span class="number">0</span>%</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">17</span> INFO mapred.JobClient: Job complete: job_201512311537_0002</span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">17</span> INFO mapred.JobClient: Counters: <span class="number">18</span></span><br><span class="line"><span class="number">15</span>/<span class="number">12</span>/<span class="number">31</span> <span class="number">15</span>:<span class="number">40</span>:<span class="number">17</span> INFO mapred.JobClient:   Map-Reduce Framework</span><br></pre></td></tr></table></figure></p>
 <h1 id="总结">总结</h1><p>nutch支持单机爬取，　也支持hadoop分布式爬取，功能强大，且能导出到多种源。</p>
@@ -138,7 +139,7 @@
     <link href="/2015/12/01/oldPosts/"/>
     <id>/2015/12/01/oldPosts/</id>
     <published>2015-12-01T11:19:37.000Z</published>
-    <updated>2015-12-31T08:13:43.842Z</updated>
+    <updated>2015-12-31T08:13:44.200Z</updated>
     <content type="html"><![CDATA[<h2 id="阅读列表">阅读列表</h2><blockquote>
 <p>css 径向渐变 <a href="http://www.w3cplus.com/css3/new-css3-radial-gradient.html" target="_blank" rel="external">http://www.w3cplus.com/css3/new-css3-radial-gradient.html</a></p>
 <p>40款bootstrap模板 <a href="http://www.oschina.net/news/59924/free-bootstrap-templates" target="_blank" rel="external">http://www.oschina.net/news/59924/free-bootstrap-templates</a></p>
