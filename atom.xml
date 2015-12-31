@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="/"/>
-  <updated>2015-12-31T08:02:52.429Z</updated>
+  <updated>2015-12-31T08:10:23.427Z</updated>
   <id>/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Nutch结合hadoop进行分布式爬取]]></title>
+    <title><![CDATA[爬虫工具nutch学习系列4 - 结合hadoop进行分布式爬取]]></title>
     <link href="/2015/12/31/nutch-hadoop/"/>
     <id>/2015/12/31/nutch-hadoop/</id>
     <published>2015-12-31T07:47:11.000Z</published>
-    <updated>2015-12-31T08:02:52.429Z</updated>
+    <updated>2015-12-31T08:10:23.427Z</updated>
     <content type="html"><![CDATA[<h1 id="hadoop">hadoop</h1><h2 id="安装">安装</h2><p>Nutch2.1依赖hadoop1.0.3版本，所以下载hadoop1.0.3版本。安装官方指导文档安装，并配置伪分布式模式</p>
 <h2 id="验证">验证</h2><p>配置完成后，敲入命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop version</span><br></pre></td></tr></table></figure></p>
 <p>查看版本信息，若类似如下信息，则表示成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hadoop <span class="number">1.0</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure></p>
@@ -49,72 +49,13 @@
     <link href="/2015/12/30/nutchStudy-3-post/"/>
     <id>/2015/12/30/nutchStudy-3-post/</id>
     <published>2015-12-30T12:19:47.000Z</published>
-    <updated>2015-12-30T12:21:13.932Z</updated>
+    <updated>2015-12-31T08:04:14.726Z</updated>
     <content type="html"></content>
     <summary type="html">
     
     </summary>
     
-  </entry>
-  
-  <entry>
-    <title><![CDATA[往日汇总]]></title>
-    <link href="/2015/12/30/oldPosts/"/>
-    <id>/2015/12/30/oldPosts/</id>
-    <published>2015-12-30T12:07:08.852Z</published>
-    <updated>2015-12-30T12:07:08.852Z</updated>
-    <content type="html"><![CDATA[<h2 id="阅读列表">阅读列表</h2><blockquote>
-<p>css 径向渐变 <a href="http://www.w3cplus.com/css3/new-css3-radial-gradient.html" target="_blank" rel="external">http://www.w3cplus.com/css3/new-css3-radial-gradient.html</a></p>
-<p>40款bootstrap模板 <a href="http://www.oschina.net/news/59924/free-bootstrap-templates" target="_blank" rel="external">http://www.oschina.net/news/59924/free-bootstrap-templates</a></p>
-<p>数梦工业云 <a href="http://cloud.dtdream.com/#page1" target="_blank" rel="external">http://cloud.dtdream.com/#page1</a></p>
-</blockquote>
-<a id="more"></a>
-<h2 id="阅读列表２">阅读列表２</h2><blockquote>
-<p>animate.css 一个提供超炫动画效果的css <a href="http://daneden.github.io/animate.css/" target="_blank" rel="external">http://daneden.github.io/animate.css/</a></p>
-<p>animatable 另一个提供动画效果的css <a href="https://github.com/leaverou/animatable" target="_blank" rel="external">https://github.com/leaverou/animatable</a></p>
-<p>fullPage.js 一个全屏滚动插件 <a href="https://github.com/alvarotrigo/fullPage.js" target="_blank" rel="external">https://github.com/alvarotrigo/fullPage.js</a></p>
-<p>Foundation <a href="http://foundation.zurb.com/index.html" target="_blank" rel="external">http://foundation.zurb.com/index.html</a></p>
-<p>Pure <a href="http://purecss.io/" target="_blank" rel="external">http://purecss.io/</a></p>
-<p>Semantic UI <a href="http://www.semantic-ui.cn/" target="_blank" rel="external">http://www.semantic-ui.cn/</a></p>
-</blockquote>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h2 id="阅读列表">阅读列表</h2><blockquote>
-<p>css 径向渐变 <a href="http://www.w3cplus.com/css3/new-css3-radial-gradient.html">http://www.w3cplus.com/css3/new-css3-radial-gradient.html</a></p>
-<p>40款bootstrap模板 <a href="http://www.oschina.net/news/59924/free-bootstrap-templates">http://www.oschina.net/news/59924/free-bootstrap-templates</a></p>
-<p>数梦工业云 <a href="http://cloud.dtdream.com/#page1">http://cloud.dtdream.com/#page1</a></p>
-</blockquote>]]>
-    
-    </summary>
-    
-      <category term="其他" scheme="/tags/%E5%85%B6%E4%BB%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="/2015/12/30/hello-world/"/>
-    <id>/2015/12/30/hello-world/</id>
-    <published>2015-12-30T12:03:01.852Z</published>
-    <updated>2015-11-19T08:48:39.288Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>]]>
-    
-    </summary>
-    
-      <category term="其他" scheme="/tags/%E5%85%B6%E4%BB%96/"/>
+      <category term="crawler" scheme="/tags/crawler/"/>
     
   </entry>
   
@@ -123,7 +64,7 @@
     <link href="/2015/12/30/nutchStudy-2-post/"/>
     <id>/2015/12/30/nutchStudy-2-post/</id>
     <published>2015-12-30T11:19:37.000Z</published>
-    <updated>2015-12-30T12:19:28.411Z</updated>
+    <updated>2015-12-31T08:07:41.740Z</updated>
     <content type="html"></content>
     <summary type="html">
     
@@ -138,7 +79,7 @@
     <link href="/2015/12/30/nutchStudy-1-post/"/>
     <id>/2015/12/30/nutchStudy-1-post/</id>
     <published>2015-12-30T11:19:37.000Z</published>
-    <updated>2015-12-30T12:32:11.430Z</updated>
+    <updated>2015-12-31T08:07:49.845Z</updated>
     <content type="html"><![CDATA[<h2 id="Nutch简介">Nutch简介</h2><p>Nutch是Apache开源项目里的网络爬虫(Web crawler)，包括２大功能：网络爬虫和索引建立。Nutch目的是能够建立强大的搜索引擎。Nutch 1.x支持Hadoop分布式爬取，建立反向索引至solr，直接能在solr进行搜索。Nutch 2.x使用Gora(Apache开源项目，大数据序列化工具)开始支持多种数据源的导出，支持HBase、MySQL(2.3后不支持)、Solr、ElasticSearch等。</p>
 <h2 id="安装">安装</h2><ul>
 <li>下载安装包apache-nutch-1.X-bin.zip</li>
@@ -189,6 +130,67 @@
     </summary>
     
       <category term="crawler" scheme="/tags/crawler/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[往日汇总]]></title>
+    <link href="/2015/12/01/oldPosts/"/>
+    <id>/2015/12/01/oldPosts/</id>
+    <published>2015-12-01T11:19:37.000Z</published>
+    <updated>2015-12-31T08:13:43.842Z</updated>
+    <content type="html"><![CDATA[<h2 id="阅读列表">阅读列表</h2><blockquote>
+<p>css 径向渐变 <a href="http://www.w3cplus.com/css3/new-css3-radial-gradient.html" target="_blank" rel="external">http://www.w3cplus.com/css3/new-css3-radial-gradient.html</a></p>
+<p>40款bootstrap模板 <a href="http://www.oschina.net/news/59924/free-bootstrap-templates" target="_blank" rel="external">http://www.oschina.net/news/59924/free-bootstrap-templates</a></p>
+<p>数梦工业云 <a href="http://cloud.dtdream.com/#page1" target="_blank" rel="external">http://cloud.dtdream.com/#page1</a></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="阅读列表２">阅读列表２</h2><blockquote>
+<p>animate.css 一个提供超炫动画效果的css <a href="http://daneden.github.io/animate.css/" target="_blank" rel="external">http://daneden.github.io/animate.css/</a></p>
+<p>animatable 另一个提供动画效果的css <a href="https://github.com/leaverou/animatable" target="_blank" rel="external">https://github.com/leaverou/animatable</a></p>
+<p>fullPage.js 一个全屏滚动插件 <a href="https://github.com/alvarotrigo/fullPage.js" target="_blank" rel="external">https://github.com/alvarotrigo/fullPage.js</a></p>
+<p>Foundation <a href="http://foundation.zurb.com/index.html" target="_blank" rel="external">http://foundation.zurb.com/index.html</a></p>
+<p>Pure <a href="http://purecss.io/" target="_blank" rel="external">http://purecss.io/</a></p>
+<p>Semantic UI <a href="http://www.semantic-ui.cn/" target="_blank" rel="external">http://www.semantic-ui.cn/</a></p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="阅读列表">阅读列表</h2><blockquote>
+<p>css 径向渐变 <a href="http://www.w3cplus.com/css3/new-css3-radial-gradient.html">http://www.w3cplus.com/css3/new-css3-radial-gradient.html</a></p>
+<p>40款bootstrap模板 <a href="http://www.oschina.net/news/59924/free-bootstrap-templates">http://www.oschina.net/news/59924/free-bootstrap-templates</a></p>
+<p>数梦工业云 <a href="http://cloud.dtdream.com/#page1">http://cloud.dtdream.com/#page1</a></p>
+</blockquote>]]>
+    
+    </summary>
+    
+      <category term="其他" scheme="/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="/2015/11/30/hello-world/"/>
+    <id>/2015/11/30/hello-world/</id>
+    <published>2015-11-30T11:19:37.000Z</published>
+    <updated>2015-12-31T08:13:30.052Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>]]>
+    
+    </summary>
+    
+      <category term="其他" scheme="/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   
