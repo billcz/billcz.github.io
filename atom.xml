@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="/"/>
-  <updated>2015-12-31T08:58:59.172Z</updated>
+  <updated>2016-01-20T04:19:50.920Z</updated>
   <id>/</id>
   
   <author>
@@ -13,6 +13,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[web]]></title>
+    <link href="/2016/01/20/web/"/>
+    <id>/2016/01/20/web/</id>
+    <published>2016-01-20T04:19:26.000Z</published>
+    <updated>2016-01-20T04:19:50.920Z</updated>
+    <content type="html"><![CDATA[<h1 id="ppt">ppt</h1><p><a href="http://lab.hakim.se/reveal-js/#/20" target="_blank" rel="external">http://lab.hakim.se/reveal-js/#/20</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="ppt">ppt</h1><p><a href="http://lab.hakim.se/reveal-js/#/20" target="_blank" rel="external">http://lab.hakim.se/reveal-js/#/20</a></]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[爬虫工具nutch学习系列5 - 使用Eclipse进行单步调试]]></title>
+    <link href="/2016/01/04/nutch-eclipse/"/>
+    <id>/2016/01/04/nutch-eclipse/</id>
+    <published>2016-01-04T07:03:14.000Z</published>
+    <updated>2016-01-04T07:13:55.682Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="crawler" scheme="/tags/crawler/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[爬虫工具nutch学习系列4 - 结合hadoop进行分布式爬取]]></title>
