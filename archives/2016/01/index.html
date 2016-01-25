@@ -188,6 +188,142 @@
                 <div class="postShorten-header">
                     <h1 class="postShorten-title" itemprop="headline">
                         
+                                <a class="link-unstyled" href="/2016/01/25/pyspider/">pyspider</a>
+                        
+                    </h1>
+                    <div class="postShorten-meta">
+    <time itemprop="datePublished" content="Mon Jan 25 2016 14:09:32 GMT+0800">
+	
+		    Jan 25, 2016
+    	
+    </time>
+    
+</div>
+                </div>
+                
+                
+                    <div class="postShorten-content" itemprop="articleBody">
+                        <h1 id="分布式爬虫Pyspider搭建指南">分布式爬虫Pyspider搭建指南</h1><p>推荐系统是Ubuntu.便于安装相关软件。</p>
+<h2 id="安装相关软件">安装相关软件</h2><ol>
+<li><p>更新ubuntu源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装python相关开发环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python python-dev python-distribute python-pip libcurl4-openssl-dev libxml2-dev libxslt1-dev python-lxml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装mysql(可选)<br>只在调度(Scheduler)节点上安装，用于数据库projectdb，保存工程信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install mysql-server-<span class="number">5.6</span> mysql-client-<span class="number">5.6</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装phantomjs</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install phantomjs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装phspider</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --allow-all-external pyspider[all]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>若出现如下错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__main__.ConfigurationError: Could not run curl-config: [Errno <span class="number">2</span>] No such file or directory</span><br><span class="line">Cleaning up...</span><br><span class="line">Command python setup.py egg_info failed with error code <span class="number">1</span> <span class="keyword">in</span> /tmp/pip_build_root/pycurl</span><br><span class="line">Storing debug <span class="built_in">log</span> <span class="keyword">for</span> failure <span class="keyword">in</span> /root/.pip/pip.log</span><br></pre></td></tr></table></figure>
+<p>则敲入命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libcurl4-openssl-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若出现如下错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Could not find any downloads that satisfy the requirement mysql-connector-python&gt;=<span class="number">1.2</span>.<span class="number">2</span> (from pyspider[all])</span><br><span class="line">Cleaning up...</span><br><span class="line">No distributions at all found <span class="keyword">for</span> mysql-connector-python&gt;=<span class="number">1.2</span>.<span class="number">2</span> (from pyspider[all])</span><br></pre></td></tr></table></figure>
+<p>需手动下载mysql-connector-python对应版本并上传至ecs，现环境是ubuntu14.04，下载mysql-connector-python-py3_2.0.4-1ubuntu14.04_all.deb后，到安装包所在目录，敲入命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --install mysql-connector-python-py3_2.<span class="number">0.4</span>-<span class="number">1</span>ubuntu14.<span class="number">04</span>_all.deb</span><br></pre></td></tr></table></figure>
+<p>－　若出现如下错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Error: pg_config executable not found.</span><br><span class="line">...</span><br><span class="line">Cleaning up...</span><br><span class="line">Command python setup.py egg_info failed with error code <span class="number">1</span> <span class="keyword">in</span> /tmp/pip_build_root/psycopg2</span><br><span class="line">Storing debug <span class="built_in">log</span> <span class="keyword">for</span> failure <span class="keyword">in</span> /root/.pip/pip.log</span><br></pre></td></tr></table></figure>
+<p>需安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libpq-dev python-dev</span><br></pre></td></tr></table></figure>
+<p>上述错误都解决后，即可安装成功。<br>测试启动pyspider<br>敲入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyspider</span><br></pre></td></tr></table></figure>
+<p>启动，若没有出现错误，则启动成功，　登入<a href="http://ip:5000查看。" target="_blank" rel="external">http://ip:5000查看。</a><br>若出现错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">root@iZ23vpu49p9Z:~/software<span class="comment"># pyspider</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"/usr/local/bin/pyspider"</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    from pkg_resources import load_entry_point</span><br><span class="line">  File <span class="string">"/usr/lib/python2.7/dist-packages/pkg_resources.py"</span>, line <span class="number">2749</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    working_<span class="built_in">set</span> = WorkingSet._build_master()</span><br><span class="line">  File <span class="string">"/usr/lib/python2.7/dist-packages/pkg_resources.py"</span>, line <span class="number">444</span>, <span class="keyword">in</span> _build_master</span><br><span class="line">    ws.require(__requires__)</span><br><span class="line">  File <span class="string">"/usr/lib/python2.7/dist-packages/pkg_resources.py"</span>, line <span class="number">725</span>, <span class="keyword">in</span> require</span><br><span class="line">    needed = self.resolve(parse_requirements(requirements))</span><br><span class="line">  File <span class="string">"/usr/lib/python2.7/dist-packages/pkg_resources.py"</span>, line <span class="number">628</span>, <span class="keyword">in</span> resolve</span><br><span class="line">    raise DistributionNotFound(req)</span><br><span class="line">pkg_resources.DistributionNotFound: MarkupSafe</span><br></pre></td></tr></table></figure>
+<p>敲入命令，安装markupsafe:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install markupsafe</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>安装rabbitMQ</p>
+<ul>
+<li><p>下载rabbitMQ安装包rabbitmq-server_3.6.0-1_all.deb。上传至ECS。进入安装目录，安装.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --install rabbitmq-server_3.<span class="number">6.0</span>-<span class="number">1</span>_all.deb</span><br></pre></td></tr></table></figure>
+<p>提示如下信息，缺少Erlang，敲入命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get <span class="operator">-f</span> install</span><br></pre></td></tr></table></figure>
+<p>既能完成安装。</p>
+</li>
+</ul>
+</li>
+<li><p>配置rabbitMQ集群<br> RabbitMQ Cluster是根据Erlang的实现的。必须满足一下几个要求：</p>
+<pre><code><span class="number">1.</span> 所有机器上，必须Erlang运行时和RabbitMQ的版本相同。（否则会不能连接到一起）
+<span class="number">2.</span> 所有机器上，的Erlang的Cookie都相同。
+</code></pre><ul>
+<li><p>先停止其他几个节点的RabbitMQ服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service rabbitmq-server stop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置hosts文件，配置集群的机器需能相互访问。　vi /etc/hosts/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10.47</span>.<span class="number">50.201</span> node1</span><br><span class="line"><span class="number">10.47</span>.<span class="number">161.37</span> node2</span><br><span class="line"><span class="number">10.47</span>.<span class="number">161.94</span> node3</span><br><span class="line"><span class="number">10.47</span>.<span class="number">161.67</span> node4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置 Erlang Cookie<br>Erlang Cookie 文件：/var/lib/rabbitmq/.erlang.cookie。这里将 node1 的该文件复制到 node2、node3，由于这个文件权限是 400，所以需要先修改 node2、node3 中的该文件权限为 777：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">777</span> /var/lib/rabbitmq/.erlang.cookie</span><br></pre></td></tr></table></figure>
+<p>然后将 node1 中的该文件拷贝到 node2、node3，最后将权限和所属用户/组修改回来：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">400</span> /var/lib/rabbitmq/.erlang.cookie</span><br><span class="line">chown rabbitmq /var/lib/rabbitmq/.erlang.cookie</span><br><span class="line">chgrp rabbitmq /var/lib/rabbitmq/.erlang.cookie</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>节点１重启rabbitmq服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl stop</span><br><span class="line">rabbitmq-server -detached</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组成集群<br>将node2,node3,node4组成集群</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">node2<span class="comment"># rabbitmqctl stop_app</span></span><br><span class="line">node2<span class="comment"># rabbitmqctl join_cluster rabbit@node1</span></span><br><span class="line">node2<span class="comment"># rabbitmqctl start_app</span></span><br><span class="line"></span><br><span class="line">node3<span class="comment"># rabbitmqctl stop_app</span></span><br><span class="line">node3<span class="comment"># rabbitmqctl join_cluster rabbit@node1</span></span><br><span class="line">node3<span class="comment"># rabbitmqctl start_app</span></span><br><span class="line"></span><br><span class="line">node4<span class="comment"># rabbitmqctl stop_app</span></span><br><span class="line">node4<span class="comment"># rabbitmqctl join_cluster rabbit@node1</span></span><br><span class="line">node4<span class="comment"># rabbitmqctl start_app</span></span><br></pre></td></tr></table></figure>
+<p>若出现如下错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Cluster status of node rabbit@node2 ...</span><br><span class="line">Error: unable to connect to node rabbit@node2: nodedown</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>kill掉所有rabbitmq进程，再启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service rabbitmq-server start</span><br></pre></td></tr></table></figure>
+<p>再加入一遍集群。<br>加入成功后，在任一台机器上查看集群状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl cluster_status</span><br></pre></td></tr></table></figure>
+<p>显示如下信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@node4:~<span class="comment"># rabbitmqctl cluster_status</span></span><br><span class="line">Cluster status of node rabbit@node4 ...</span><br><span class="line">[&#123;nodes,[&#123;disc,[rabbit@node1,rabbit@node2,rabbit@node3,rabbit@node4]&#125;]&#125;,</span><br><span class="line"> &#123;running_nodes,[rabbit@node1,rabbit@node2,rabbit@node3,rabbit@node4]&#125;,</span><br><span class="line"> &#123;cluster_name,&lt;&lt;<span class="string">"rabbit@node1"</span>&gt;&gt;&#125;,</span><br><span class="line"> &#123;partitions,[]&#125;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置镜像队列策略<br>在任意一个节点上执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl <span class="built_in">set</span>_policy ha-all <span class="string">"^"</span> <span class="string">'&#123;"ha-mode":"all"&#125;'</span></span><br></pre></td></tr></table></figure>
+<p>将所有队列设置为镜像队列，即队列会被复制到各个节点，各个节点状态保持一直。<br>完成这以上个步骤后，RabbitMQ 高可用集群就已经搭建好了。</p>
+</li>
+</ul>
+</li>
+<li>配置rabbitMQ用户和vhosts<br>删除默认用户guest<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl rabbitmq delete_user guest</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>新增用户pyspider,密码pyspider,并将其设置位administrator<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl add_user pyspider pyspider</span><br><span class="line">rabbitmqctl <span class="built_in">set</span>_user_tags pyspider administrator</span><br></pre></td></tr></table></figure></p>
+<p>新增vhost:/node1,用于抓取node1上这套消息队列，并赋给用户pyspider权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl add_vhost /node1</span><br><span class="line">rabbitmqctl <span class="built_in">set</span>_permissions -p /node1 pyspider <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span></span><br></pre></td></tr></table></figure></p>
+<p>同理，新增vhost:/node2,/node3/node4,为以后另开爬虫系统预留<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl add_vhost /node2</span><br><span class="line">rabbitmqctl <span class="built_in">set</span>_permissions -p /node2 pyspider <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span></span><br><span class="line">rabbitmqctl add_vhost /node3</span><br><span class="line">rabbitmqctl <span class="built_in">set</span>_permissions -p /node3 pyspider <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span></span><br><span class="line">rabbitmqctl add_vhost /node4</span><br><span class="line">rabbitmqctl <span class="built_in">set</span>_permissions -p /node4 pyspider <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>部署分布式爬虫<br>计划哪几台部署什么类型。现调度节点在node1上的规划如下：<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">node1</span>: <span class="string">scheduler+webui+fetcher+processor+result_worker+phantomjs</span></span><br><span class="line"><span class="attribute">node2</span>: <span class="string">fetcher+processor+result_worker+phantomjs</span></span><br><span class="line"><span class="attribute">node3</span>: <span class="string">fetcher+processor+result_worker+phantomjs</span></span><br><span class="line"><span class="attribute">node4</span>: <span class="string">fetcher+processor+result_worker+phantomjs</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>先配置好config.json,主要是数据库和rabbitMQ. 典型文件配置如下，需根据实际情况修改：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">taskdb</span>": <span class="value"><span class="string">"mysql+taskdb://user:password@host:3306/taskdb"</span></span>,</span><br><span class="line">  "<span class="attribute">projectdb</span>": <span class="value"><span class="string">"mysql+projectdb://user:password@host:3306/projectdb"</span></span>,</span><br><span class="line">  "<span class="attribute">resultdb</span>": <span class="value"><span class="string">"mysql+resultdb://user:password@host:3306/resultdb"</span></span>,</span><br><span class="line">  "<span class="attribute">message_queue</span>": <span class="value"><span class="string">"amqp://user:passord@host:5672/%2F"</span></span>,</span><br><span class="line">  "<span class="attribute">webui</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">username</span>": <span class="value"><span class="string">"root"</span></span>,</span><br><span class="line">    "<span class="attribute">password</span>": <span class="value"><span class="string">"123456"</span></span>,</span><br><span class="line">    "<span class="attribute">need-auth</span>": <span class="value"><span class="literal">true</span></span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改rdsdb.py，根据实际情况修改用户名、密码、地址、端口。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">username = <span class="string">'dtsch'</span></span><br><span class="line">password = <span class="string">'123456'</span></span><br><span class="line">database = <span class="string">'dtsch'</span></span><br><span class="line">host = <span class="string">'rds24y37eyn12878wcbmm.mysql.rds.lab.dtdream.com'</span></span><br></pre></td></tr></table></figure></p>
+<p>将config.json、rdsdb.py、 zhihuResultWorker.py传至node2,node3,node4.<br>启动scheduler</p>
+
+                        
+                            
+
+                        
+                        
+                            <p>
+                                <a href="/2016/01/25/pyspider/#post-footer" class="postShorten-excerpt_link link">
+                                    注释和共享
+                                </a>
+                            </p>
+                        
+                    </div>
+                
+            </div>
+            
+        </article>
+    
+        
+        <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+            <div class="postShorten-wrap">
+                <div class="postShorten-header">
+                    <h1 class="postShorten-title" itemprop="headline">
+                        
                                 <a class="link-unstyled" href="/2016/01/20/web/">web</a>
                         
                     </h1>
